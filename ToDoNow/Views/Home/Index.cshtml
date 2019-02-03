@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ToDoNow.Models.Todo>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="col-lg-6 col-lg-offset-3">
+    <div class="row">
+        <form method="post">
+            <label name="Title">Title:</label>
+            <input type="text" name="Title" />
+
+            <label name="Body">Title Body:</label>
+            <input type="text" name="Body" />
+
+            <button class="btn btn-group-sm bg-primary">Add</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="col-lg-12">
+    <div class="row">
+        <h2>List of Todos</h2>
+        @foreach (var item in Model)
+        {
+        <div class="jumbotron">
+            <h4>Title: @item.Title</h4>
+            <p>Body: @item.Body</p>
+            <span>Completed: @item.Completed</span>
+            <div>
+                <button class="btn btn-info">@Html.ActionLink("Edit", "Edit", new { Id = item.Id})</button>
+                <button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { Id = item.Id })</button>
+            </div>
+        </div>
+      
+        }
+    </div>
+</div>
